@@ -4,4 +4,4 @@ WORKDIR /mnt
 RUN gem update
 RUN gem install bundler
 RUN gem install jekyll
-ENTRYPOINT bundle install && bundle exec jekyll serve
+ENTRYPOINT jekyll serve --host 0.0.0.0 --force_polling
