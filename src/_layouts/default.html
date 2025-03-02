@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-  </head>
-  <body>
-    {{ content }}
-  </body>
+<html lang="{{ site.lang | default: " en-US" }}">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="https://www.kieftsoftwareengineering.nl/assets/css/style.css">
+  <link rel="stylesheet" href="https://www.kieftsoftwareengineering.nl/assets/css/fonts.css">
+  <link rel="stylesheet" href="https://www.kieftsoftwareengineering.nl/assets/libs/font-awesome/css/all.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="content">
+      <div class="container">
+        <div class="menu">
+          <ul>
+            <li class="active">Home</li>
+            <li style="display: none;">Blog</li>
+          </ul>
+        </div>
+        <div class="row">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+</body>
+
 </html>
