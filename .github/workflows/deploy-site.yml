@@ -13,12 +13,11 @@ jobs:
         working-directory: /srv/jekyll
     steps:
      - name: Checkout
-       uses: actions/checkout@v3
-       with:
-        fetch-depth: 0
+       uses: actions/checkout@v4
         
      - name: Generate
        run:  |
+        cp $GITHUB_WORKSPACE /srv/jekyll
         ls
         echo "$PWD"
         mkdir piet
