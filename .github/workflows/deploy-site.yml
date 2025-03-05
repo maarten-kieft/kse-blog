@@ -21,5 +21,7 @@ jobs:
        run:  |
         ls
         echo "$PWD"
+        mkdir piet
+        ls
         cd src
         jekyll build
