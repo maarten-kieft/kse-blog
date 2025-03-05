@@ -20,5 +20,6 @@ jobs:
      - name: Generate
        run:  |
         ls
+        echo "$PWD"
         cd src
         jekyll build
