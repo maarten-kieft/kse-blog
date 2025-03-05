@@ -9,6 +9,7 @@ jobs:
       image: jekyll/jekyll
     defaults:
       run:
+        shell: bash
         working-directory: /srv/jekyll
     steps:
      - name: Checkout
