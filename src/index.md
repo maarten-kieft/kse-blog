@@ -1,6 +1,6 @@
 ---
-layout: default
-title: "Happy Jekylling!"
+layout: home
+title: "Blog - Maarten Kieft - Kieft Software Engineering"
 ---
 
 ## You're ready to go!
