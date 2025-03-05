@@ -7,20 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: jekyll/jekyll
-    defaults:
-      run:
-        shell: bash
-        working-directory: /srv/jekyll
     steps:
      - name: Checkout
        uses: actions/checkout@v4
         
      - name: Generate
        run:  |
-        cp $GITHUB_WORKSPACE/src /srv/jekyll -R 
-        ls
-        echo "$PWD"
-        mkdir piet
-        ls
+        chmod 777 -R src
         cd src
         jekyll build
