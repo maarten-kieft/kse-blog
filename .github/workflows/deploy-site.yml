@@ -17,7 +17,7 @@ jobs:
         
      - name: Generate
        run:  |
-        cp $GITHUB_WORKSPACE /srv/jekyll
+        cp $GITHUB_WORKSPACE/kse-blog/kse-blog /srv/jekyll
         ls
         echo "$PWD"
         mkdir piet
