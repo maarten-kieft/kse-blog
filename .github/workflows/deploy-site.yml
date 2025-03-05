@@ -14,4 +14,3 @@ jobs:
         
      - name: Generate
        run:  jekyll build
-
