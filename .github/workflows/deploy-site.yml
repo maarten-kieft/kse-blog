@@ -17,9 +17,9 @@ jobs:
         cd src
         jekyll build
 
-    - name: publish
-      uses: genietim/ftp-action@releases/v4
-      with:
+     - name: publish
+       uses: genietim/ftp-action@releases/v4
+       with:
         host: ${{ secrets.FTP_SERVER }}
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
