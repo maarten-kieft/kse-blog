@@ -3,7 +3,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     container: 
       image: jekyll/jekyll
@@ -16,3 +16,12 @@ jobs:
         chmod 777 -R src
         cd src
         jekyll build
+
+    - name: publish
+      uses: genietim/ftp-action@releases/v4
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: "src/_site"
+        remoteDir: "/"
