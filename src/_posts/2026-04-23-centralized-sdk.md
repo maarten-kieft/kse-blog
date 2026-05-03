@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Central configuration & transitive dependencies management via custom .NET SDK
+title: Central configuration & transitive dependencies management with a custom .NET SDK
 ---
 
-# Central configuration & transitive dependencies management via custom .NET SDK
+# Central configuration & transitive dependencies management with a custom .NET SDK
 
 ## Overview
 
