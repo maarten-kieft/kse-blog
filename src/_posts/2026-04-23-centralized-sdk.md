@@ -2,18 +2,17 @@
 layout: default
 ---
 
-# Centralized .NET SDK Configuration Using Internal SDK Wrappers
+# Central configuration & transitive dependencies management via custom .NET SDK
 
 ## Overview
 
-This document describes a centralized approach for managing .NET build configuration using internal SDK wrappers distributed as NuGet packages. The primary goal is to centralize build configuration and transitive dependency management, allowing specific dependency versions to be enforced consistently across all repositories from a single location. This reduces duplication across repositories by consolidating shared build logic and dependency configuration.
-This document describes a centralized approach for managing .NET build configuration using internal SDK wrappers distributed as NuGet packages. The approach reduces duplication across repositories by consolidating shared build logic and dependency configuration.
+We needed a way to centralize build configuration and transitive dependency management, allowing specific dependency versions to be enforced consistently across all repositories from a single location. This reduces duplication across repositories by consolidating shared build logic and dependency configuration. In order to do that we introduced  custom (.NET) SDKs which wrapped the Microsoft SDks. These custom SDKs are published as NuGet packages and referenced by our projects. This approach reduces duplication across repositories by consolidating shared build logic and dependency configuration.
 
 ![Overview](https://www.kieftsoftwareengineering.nl/blog/assets/images/2026094023-centralizd-sdk.png)
 
 ## Architecture
 
-Three SDK layers are used:
+We created a new repository which contains 3 SDK layers:
 
 * Sdk: wrapper around Microsoft.NET.Sdk
 * Sdk.Web: wrapper around Microsoft.NET.Sdk.Web
@@ -24,13 +23,18 @@ Sdk and Sdk.Web act as thin abstraction layers over the official .NET SDKs. Shar
 ## Repository structure
 
 ```
-Sdk/
-Sdk.Web/
-Sdk.Shared/
+├── Sdk/
+│   ├── Sdk.props
+│   └── Sdk.targets
+├── Sdk.Web/
+│   ├── Sdk.props
+│   └── Sdk.targets
+└── Sdk.Shared/
+    ├── Shared.props
+    └── Shared.targets
 ```
 
 Each SDK contains:
-
 * props file (build properties)
 * targets file (build rules and package references)
 
@@ -40,7 +44,7 @@ Example props import: `Sdk/Sdk.props`
 ```xml 
 <Project>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
-  <Import Project="MyTeam.Shared.props" />
+  <Import Project="Shared.props" />
 </Project>
 ```
 
@@ -49,11 +53,11 @@ Sdk.Web uses Microsoft.NET.Sdk.Web: `Sdk.Web/Sdk.props`
 ```xml
 <Project>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk.Web" />
-  <Import Project="MyTeam.Shared.props" />
+  <Import Project="Shared.props" />
 </Project>
 ```
 
-The shared props: `Sdk.Shared/MyTeam.shared.props`
+The shared props: `Sdk.Shared/shared.props`
 ```xml
 <Project>
   <PropertyGroup>
@@ -70,13 +74,13 @@ Example targets import:
 ```xml
 <Project>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  <Import Project="MyTeam.Shared.targets" />
+  <Import Project="Shared.targets" />
 </Project>
 ```
 
 Sdk.Web uses the same structure with Microsoft.NET.Sdk.Web.
 
-The shared targets: `Sdk.Shared/MyTeam.shared.targets`
+The shared targets: `Sdk.Shared/shared.targets`
 
 ```xml
 <Project>
@@ -160,9 +164,5 @@ After:
 
 ## Summary
 
-The approach replaces per-repository configuration with versioned SDK wrappers. Shared build logic and transitive dependency management are defined once and distributed as a package. This allows central enforcement of dependency versions, including transitive dependencies, ensuring consistent behavior across all consuming projects.
+The approach replaces per-repository configuration with versioned SDK wrappers. Shared build logic and transitive dependency management are defined once and distributed as a package. This allows central enforcement of dependency versions, including transitive dependencies, ensuring consistent behavior across all consuming projects. Renovate handles dependency updates for the SDK packages, ensuring that when a new SDK version is published, updates are automatically propagated to consuming repositories.
 
-Renovate handles dependency updates for the SDK packages, ensuring that when a new SDK version is published, updates are automatically propagated to consuming repositories.
-The approach replaces per-repository configuration with versioned SDK wrappers. Shared build logic and transitive dependency management are defined once and distributed as a package. This allows central enforcement of dependency versions, including transitive dependencies, ensuring consistent behavior across all consuming projects.
-
-The approach replaces per-repository configuration with versioned SDK wrappers. Shared build logic is defined once and distributed as a package, ensuring consistent behavior across all consuming projects.
