@@ -9,7 +9,7 @@ layout: default
 This document describes a centralized approach for managing .NET build configuration using internal SDK wrappers distributed as NuGet packages. The primary goal is to centralize build configuration and transitive dependency management, allowing specific dependency versions to be enforced consistently across all repositories from a single location. This reduces duplication across repositories by consolidating shared build logic and dependency configuration.
 This document describes a centralized approach for managing .NET build configuration using internal SDK wrappers distributed as NuGet packages. The approach reduces duplication across repositories by consolidating shared build logic and dependency configuration.
 
-![Overview](/blog/assets/images/2026094023-centralizd-sdk.png)
+![Overview](https://www.kieftsoftwareengineering.nl/blog/assets/images/2026094023-centralizd-sdk.png)
 
 ## Architecture
 
