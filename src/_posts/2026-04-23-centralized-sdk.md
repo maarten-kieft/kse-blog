@@ -91,8 +91,8 @@ The shared targets: `Sdk.Shared/shared.targets`
 
   <!-- Force mimimum versions of certain transitive dependencies -->
   <ItemGroup>
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.7" Visible="false" PrivateAssets="all" AllowPruning="false" />
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="10.0.7" Visible="false" PrivateAssets="all" AllowPruning="false" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.7"/>
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="10.0.7" />
   </ItemGroup>
 </Project>
 ```
