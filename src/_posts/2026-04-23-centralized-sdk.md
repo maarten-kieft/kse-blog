@@ -9,7 +9,7 @@ title: Central configuration & transitive dependencies management with a custom 
 
 We needed a way to centralize build configuration and transitive dependency management, allowing specific dependency versions to be enforced consistently across all repositories from a single location. This reduces duplication across repositories by consolidating shared build logic and dependency configuration. In order to do that we introduced  custom (.NET) SDKs which wrapped the Microsoft SDks. These custom SDKs are published as NuGet packages and referenced by our projects. This approach reduces duplication across repositories by consolidating shared build logic and dependency configuration.
 
-![Overview](https://www.kieftsoftwareengineering.nl/blog/assets/images/2026094023-centralizd-sdk.png)
+![Overview](https://www.kieftsoftwareengineering.nl/blog/assets/images/20260423-centralizd-sdk.png)
 
 ## Architecture
 

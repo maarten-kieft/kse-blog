@@ -9,7 +9,7 @@ title: How we keep AI coding assistants and other tools consistent across 85+ re
 
 AI coding assistants are only as good as the context you give them. If every repository has different instructions — or none at all — every developer gets a different AI experience, and the code it generates drifts from your team's conventions. We solved this, along with a broader consistency problem, by building a pipeline that pushes shared files from one central repository to every project we own automatically.
 
-![Overview](https://www.kieftsoftwareengineering.nl/blog/assets/images/2026-05-18-multi-repo-shared-files.png)
+![Overview](https://www.kieftsoftwareengineering.nl/blog/assets/images/20260518-multi-repo-shared-files.png)
 
 ## The problem with multi-repo setups
 
